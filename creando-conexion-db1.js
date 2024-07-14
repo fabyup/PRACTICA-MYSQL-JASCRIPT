@@ -1,15 +1,16 @@
-const {createConnection} = require("mysql2/promise");
+const { createConnection } = require("mysql2/promise");
 
-const conexionDB =  createConnection({
-
-    host:"localhost",
-    user:"root",
-    password:"12345",
+async function main() {
+  const conexionDB = await createConnection({
+    host: "localhost",
+    user: "root",
+    password: "12345",
     database: "compras"
+  });
+      const resultado = await conexionDB.query("SELECT * FROM mercaderia")
+     conexionDB.end();
+     console.log(resultado);
+}
+  main();
+  
 
-    });
-      
-      console.log(conexionDB);
-   
-    
-    
